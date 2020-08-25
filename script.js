@@ -117,7 +117,7 @@ let allButtons = document.getElementsByTagName('button')
 var copyAllButtons = [];
 
 for (let j=0; j < allButtons.length; j++){
-    console.log(allButtons[j].classList[1]);
+    copyAllButtons.push(allButtons[j].classList[1]);
 }
 
 function buttonColorChange(buttoninput){
@@ -153,6 +153,18 @@ function buttonReset(){
         allButtons[i].classList.remove(allButtons[i].classList[1])
         allButtons[i].classList.add(copyAllButtons[i])
     }
+}
+
+function changeToRandom(){
+    let choices = ['btn-primary', 'btn-danger', 'btn-success', 'btn-warning']
+
+    for (i = 0; i < allButtons.length; i++){
+        let randomNum = Math.floor( Math.random() * 4)
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add(choices[randomNum])
+    }
+
+
 }
 
 
