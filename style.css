@@ -1,0 +1,41 @@
+.container1{
+    border: seagreen solid;
+    text-align: center;
+    width: 75%;
+    margin: auto;
+}
+.flex-container1{
+    display: flex;
+    border: 1px black solid;
+    padding: 10px;
+    justify-content: space-around;
+}
+.flex-container1 div{
+    padding: 10px;
+    border: 1px solid red;
+    align-items: center;
+}
+
+.container2, .container3 {
+    border: red dotted;
+    text-align: center;
+    width: 75%;
+    margin: auto;
+}
+
+.flex-container2, .flex-box-container3 {
+    display: flex;
+    border: solid blue 1px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-container2 img{
+    border: 1px solid green;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.7);
+    margin: 10px;
+}
+
+.flex-box-container3 img:hover{
+    box-shadow: 0px 10px 50px rgba(37, 50, 233, 1);
+}
