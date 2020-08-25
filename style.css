@@ -16,14 +16,14 @@
     align-items: center;
 }
 
-.container2, .container3 {
+.container2, .container3, .container4 {
     border: red dotted;
     text-align: center;
     width: 75%;
     margin: auto;
 }
 
-.flex-container2, .flex-box-container3 {
+.flex-container2, .flex-box-container3, .flex-box-container4 {
     display: flex;
     border: solid blue 1px;
     flex-wrap: wrap;
