@@ -116,9 +116,8 @@ let allButtons = document.getElementsByTagName('button')
 
 var copyAllButtons = [];
 
-for (let i=0; i < allButtons.length; i++)
-{
-    console.log(allButtons[i].classList[1]);
+for (let j=0; j < allButtons.length; j++){
+    console.log(allButtons[j].classList[1]);
 }
 
 function buttonColorChange(buttoninput){
