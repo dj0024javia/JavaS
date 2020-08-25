@@ -106,3 +106,55 @@ function finalMessage(result) {
         return ({'message': 'You Tied!', 'color':'Yellow'})
     }
 }
+
+
+
+// Challange 4: change the color of all the buttons
+
+let allButtons = document.getElementsByTagName('button')
+
+
+var copyAllButtons = [];
+
+for (let i=0; i < allButtons.length; i++)
+{
+    console.log(allButtons[i].classList[1]);
+}
+
+function buttonColorChange(buttoninput){
+    if(buttoninput.value === 'Red'){
+        changeToRed()
+    } else if(buttoninput.value === 'Green'){
+        changetoGreen()
+    } else if(buttoninput.value === 'Random'){
+        changeToRandom()
+    }
+    else if(buttoninput.value === 'Reset'){
+        buttonReset()
+    }
+}
+
+
+function changeToRed(){
+    for (let i = 0; i < allButtons.length; i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add("btn-danger")
+    }
+}
+
+function changetoGreen(){
+    for (let i = 0; i < allButtons.length; i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add("btn-success")
+    }
+}
+
+function buttonReset(){
+    for (let i = 0; i < allButtons.length; i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1])
+        allButtons[i].classList.add(copyAllButtons[i])
+    }
+}
+
+
+
