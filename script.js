@@ -168,4 +168,48 @@ function changeToRandom(){
 }
 
 
+//Challange 5 Code
 
+let blackjackGame = {
+    'you' : {'scoreSpan': '#your-result', 'div': '#your-box', 'score': 0},
+    'dealer' : {'scoreSpan': '#dealer-result', 'div': '#dealer-box', 'score': 0}
+}
+
+let YOU = blackjackGame['you']
+let DEALER = blackjackGame['dealer']
+
+document.querySelector('#Hit').addEventListener('click',blackJackHit)
+
+document.querySelector('#Stand').addEventListener('click',blackJackStand)
+
+document.querySelector('#Deal').addEventListener('click',blackjackDeal)
+
+const hitSound = new Audio('./sounds/swish.m4a')
+
+
+function blackJackHit(){
+    showCard(YOU['div'])
+}
+
+function blackJackStand(){
+    showCard(DEALER['div'])
+}
+
+function showCard(div1){
+    let cardImage = document.createElement('img')
+    cardImage.src = './images/Q.png'
+    document.querySelector(div1).appendChild(cardImage)
+    hitSound.play()
+}
+
+function blackjackDeal(){
+    let yourImages = document.querySelector(blackjackGame['you']['div']).querySelectorAll('img')
+    for (i = 0; i < yourImages.length; i++){
+        yourImages[i].remove()
+    }
+
+    let dealerImages = document.querySelector(blackjackGame['dealer']['div']).querySelectorAll('img')
+    for (i = 0; i < dealerImages.length; i++){
+        dealerImages[i].remove()
+    }
+}
