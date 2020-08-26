@@ -352,3 +352,19 @@ function showResult(winner){
         document.querySelector('#Draws').textContent = blackjackGame['draws']
     }
 }
+
+
+
+// Challlange 6: Random people Generator
+
+// document.querySelector('#gen-people').addEventListener('click', generatePeople)
+
+// function generatePeople(){
+//     const url = 'https://randomuser.me/api/?results=1'
+//     fetch(url)
+//         .then(resp => resp.json)
+//             .then(data => {
+//                 // let authors = 
+//                 console.log(data['results'])
+//             })
+// }

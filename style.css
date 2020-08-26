@@ -16,14 +16,14 @@
     align-items: center;
 }
 
-.container2, .container3, .container4, .container5 {
+.container2, .container3, .container4, .container5, .container6 {
     border: black 1px solid;
     text-align: center;
     width: 75%;
     margin: auto;
 }
 
-.flex-container2, .flex-box-container3, .flex-box-container4, .flex-blackjack-result1, .flex-blackjack-row2, .flex-blackjack-row3 {
+.flex-container2, .flex-box-container3, .flex-box-container4, .flex-blackjack-result1, .flex-blackjack-row2, .flex-blackjack-row3, .flex-box-container6 {
     display: flex;
     border: solid blue 1px;
     flex-wrap: wrap;
