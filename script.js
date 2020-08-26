@@ -194,10 +194,14 @@ const hitSound = new Audio('./sounds/swish.m4a')
 const winSound = new Audio('./sounds/cash.mp3')
 const lossSound = new Audio('./sounds/aww.mp3')
 
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 function blackJackHit(){
-    if(blackjackGame['isStand'] === false){
+    if(blackjackGame['isStand'] === false && blackjackGame['isTurnOver'] === false){
         let card = generateCard()
-        console.log(card)
+        // console.log(card)
         showCard(YOU, card)
         updateScore(YOU, card)
         showScore(YOU)
@@ -205,22 +209,23 @@ function blackJackHit(){
     
 }
 
-function blackJackStand(){
+async function blackJackStand(){
+    blackjackGame['isStand'] = true
+
     if(blackjackGame['isTurnOver'] === false){
-        blackjackGame['isStand'] = true
-        let card = generateCard()
-        console.log(card)
-        showCard(DEALER, card)
-        updateScore(DEALER, card)
-        showScore(DEALER)
-        if (DEALER['score'] > 15){
-            blackjackGame['isTurnOver'] = true
-            let winner = decideWinner()
-            showResult(winner)
+        while(blackjackGame['isStand']=== true && DEALER['score'] < 16){
+           
+            let card = generateCard()
+            // console.log(card)
+            showCard(DEALER, card)
+            updateScore(DEALER, card)
+            showScore(DEALER)
+            await sleep(1000)
         }
-    }
-    
-    
+        blackjackGame['isTurnOver'] = true
+        let winner = decideWinner()
+        showResult(winner)
+    }    
 }
 
 function showCard(activePlayer, card){
@@ -296,29 +301,30 @@ function decideWinner(){
     // You don't bust and Dealer Busts
     if(YOU['score'] <=21 ){
         if((YOU['score'] > DEALER['score']) || (DEALER['score'] > 21)){
-            console.log('You Won!!')
+            // console.log('You Won!!')
             winner = YOU
         } else if((YOU['score'] < DEALER['score']) || (YOU['score'] > 21)) {
-            console.log('You Lost!!')
+            // console.log('You Lost!!')
             winner = DEALER
         } else if(YOU['score'] === DEALER['score']){
-            console.log('You Drew!!')
+            // console.log('You Drew!!')
         }
         
     }
     // You bust and Dealer doesn't bust.
-    else if (YOU['score'] > 21 && DEALER <= 21){
-        console.log('You Lost!')
+    else if (YOU['score'] > 21 && DEALER['score'] <= 21){
+        // console.log('You Lost!')
         winner = DEALER
     }
     // Both Bust
     else if(YOU['score'] > 21 && DEALER > 21){
-        console.log('You Drew!!')
+        // console.log('You Drew!!') 
     }
     return winner    
 }
 
 function showResult(winner){
+    blackjackGame['isStand'] = false
     if(blackjackGame['isTurnOver'] === true)
     {
         if(winner === YOU){
@@ -338,7 +344,7 @@ function showResult(winner){
             messageColor = 'Blue'
             blackjackGame['draws'] += 1
         }
-        console.log(blackjackGame['wins'], blackjackGame['losses'], blackjackGame['draws'])
+        // console.log(blackjackGame['wins'], blackjackGame['losses'], blackjackGame['draws'])
         document.querySelector('#result-title').textContent = message
         document.querySelector('#result-title').style.color = messageColor
         document.querySelector('#Wins').textContent = blackjackGame['wins']
